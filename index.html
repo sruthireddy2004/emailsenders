@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+ .container{
+    display: grid;
+    place-items: center;
+ }
+ .main{
+   background-color: #72619e; 
+   width: 370px;
+   height: 470px;
+ }
+ form{
+  width: 350px;
+  height: 400px;  
+ }
+
+ form label{
+    color: white;
+ }
+ .form-input{
+    margin-top: 10px;
+    font-size: 20px;
+    margin-left: 50px;
+ }
+ input{
+    width: 80%;
+    height: 30px;
+    border-radius: 10px;
+ }
+
+ .form-input button{
+    width: 120px;
+    height: 40px;
+    font-size: 20px;
+    cursor: pointer;
+ }
+</style>
+<body>
+   <div class="container">
+    <h1>Working Contact From</h1>
+
+    <div class="main">
+     <form action="">
+
+        <div class="form-input">
+             <label for="">Name</label><br>
+             <input type="text" placeholder="Enter your Name:" id="name">
+        </div>
+
+        <div class="form-input">
+            <label for="">Email</label><br>
+            <input type="text" placeholder="Enter your Email:" id="email">
+        </div>
+
+        <div class="form-input">
+            <label for="">Contact Number</label><br>
+            <input type="text" placeholder="Enter your Contact number:" id="contact">
+        </div>
+
+        <div class="form-input">
+            <label for="">Subject</label><br>
+            <input type="text" placeholder="Enter your subject:" id="subject">
+        </div>
+
+        <div class="form-input">
+            <label for="">Messages</label><br>
+            <textarea name="" id="message" cols="31" rows="4" placeholder="Enter your message...."></textarea>
+        </div>
+
+        <div class="form-input">
+            <button type="button" onclick="SendEmail()"> Send Email</button>
+        </div>
+        
+     </form>
+
+    </div>
+    <!-- end main class -->
+   </div>
+    <!--end Conatiner class  -->
+    
+    <script src="https://smtpjs.com/v3/smtp.js"> </script>
+
+
+    <script>
+        function SendEmail(){
+          var name = document.getElementById("name").value;
+          var email = document.getElementById("email").value;
+          var conatact = document.getElementById("contact").value;
+          var subject = document.getElementById("subject").value;
+          var message = document.getElementById("message").value;
+        
+          var body = "Name:" + name + "<br/> Email:" + email + "<br/> Contact Number:" + conatact + "<br/> Subject:" + subject + "<br/> Messages:" + message;
+        console.log(body);
+        Email.send({
+            Host : "smtp.elasticemail.com",
+    Username : "sruthichinthagunta@gmail.com",
+    Password : "F98491593D106C2DFB6567B6807FC3C6630D",
+    To : 'sruthichinthagunta@gmail.com',
+    From : "sruthichinthagunta@gmail.com",
+    Subject : subject,
+    Body : body
+         }).then(
+       message => alert(message)
+         );
+
+            
+        }
+    </script>
+
+ 
+</body>
+</html>
